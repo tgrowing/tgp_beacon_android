@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:id="@+id/activity_main1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="功能测试"
+                    android:textSize="20sp" />
+
+            <View
+                    android:id="@+id/bound_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/title1"
+                    android:layout_marginBottom="10dp"
+                    android:background="#000000" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <TextView
+                            android:text="SUB APP KEY"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"/>
+                        <EditText
+                            android:text=""
+                            android:layout_weight="1"
+                            android:id="@+id/subAppKeyEdit"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="Tips:域名无需填https或者http"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="事件名称"/>
+                <EditText
+                    android:text="foo-android-app-event"
+                    android:id="@+id/eventEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="自定义参数（可空）"/>
+                <EditText
+                    android:id="@+id/manualParams"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:hint="JSON 文本"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/manualEvent"
+                android:text="自定义事件上报"
+                android:background="#293d3d3d"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:orientation="horizontal"
+                    android:background="@android:color/black"></LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/test_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bound_1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="App上报"
+                            android:textSize="18sp" />
+
+                    <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainNormal"
+                            android:text="普通事件"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainRealtime"
+                            android:text="实时事件"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainNormalWithoutCode"
+                            android:text="普通事件(code为空)"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainRealtimeWithoutCode"
+                            android:text="实时事件(code为空)"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainNormalLarge"
+                            android:text="普通事件大于64k"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainRealtimeLarge"
+                            android:text="实时事件大于64k"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="agreement"
+                            android:text="同意权限"
+                            android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+
+                    <Button
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainDTRealTime"
+                            android:textSize="10dp"
+                            android:text="大同实时" />
+
+                    <Button
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainDTNormal"
+                            android:textSize="10dp"
+                            android:text="大同普通" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainNormalGreater"
+                            android:textSize="10dp"
+                            android:text="普通事件大于10kb" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainRealtimeGreater"
+                            android:textSize="10dp"
+                            android:text="实时事件大于10kb" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainNormal_nopara"
+                            android:textSize="10dp"
+                            android:text="普通事件参数为空" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainRealtime_nopara"
+                            android:textSize="10dp"
+                            android:text="实时事件参数为空" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:orientation="horizontal"
+                        android:background="@android:color/black"></LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:text="app上报（主通道appkey为空）"
+                            android:textSize="13sp" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainNormalNone"
+                            android:text="普通事件" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainRealtimeNone"
+                            android:text="实时事件" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:orientation="horizontal"
+                        android:background="@android:color/black"></LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="子通道上报"
+                            android:textSize="18sp" />
+
+                    <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubNormal"
+                            android:text="普通事件" />
+
+                    <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubRealtime"
+                            android:text="实时事件" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubNormalWithoutCode"
+                            android:text="普通事件(CODE为空)"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubRealtimeWithoutCode"
+                            android:text="实时事件(CODE为空)"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubNormalLarge"
+                            android:text="普通事件大于64k"
+                            android:textSize="10dp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubRealtimeLarge"
+                            android:text="实时事件大于64k"
+                            android:textSize="10dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:orientation="horizontal">
+
+                    <Button
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubDTRealTime"
+                            android:textSize="10dp"
+                            android:text="大同实时" />
+
+                    <Button
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubDTNormal"
+                            android:textSize="10dp"
+                            android:text="大同普通" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubNormalGreater"
+                            android:textSize="10dp"
+                            android:text="普通事件大于10kb" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubRealtimeGreater"
+                            android:textSize="10dp"
+                            android:text="实时事件大于10kb" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubNormal_nopara"
+                            android:textSize="10dp"
+                            android:text="普通事件参数为空" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportSubRealtime_nopara"
+                            android:textSize="10dp"
+                            android:text="实时事件参数为空" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:orientation="horizontal"
+                        android:background="@android:color/black"></LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="旧接口App上报"
+                            android:textSize="18sp" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:onClick="reportOldNormal"
+                            android:text="普通事件" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:onClick="reportOldRealtime"
+                            android:text="实时事件" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="旧接口通道上报"
+                            android:textSize="18sp" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:onClick="reportOldSubNormal"
+                            android:text="普通事件" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:onClick="reportOldSubRealtime"
+                            android:text="实时事件" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:orientation="horizontal"
+                        android:background="@android:color/black"></LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="App多事件"
+                            android:textSize="18sp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainManyNormal"
+                            android:textSize="10sp"
+                            android:text="普通事件" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportMainManyRealtime"
+                            android:textSize="10sp"
+                            android:text="实时事件" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="大同实时事件"
+                            android:onClick="reportMainManyDTRealtime"
+                            android:textSize="10sp"></Button>
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="大同普通事件"
+                            android:onClick="reportMainManyDTNormal"
+                            android:textSize="10sp"></Button>
+
+                    <EditText
+                            android:id="@+id/app_task_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="请输入事件数量"
+                            android:textSize="10dp"
+                            android:numeric="integer"></EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="子通道多事件"
+                            android:textSize="18sp" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:onClick="reportSubManyNormal"
+                            android:textSize="10dp"
+                            android:text="普通事件" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+
+                            android:onClick="reportSubManyRealtime"
+                            android:textSize="10dp"
+                            android:text="实时事件" />
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="大同实时事件"
+                            android:onClick="reportSubManyDTRealtime"
+                            android:textSize="10sp"></Button>
+
+                    <Button
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="大同普通事件"
+                            android:onClick="reportSubManyDTNormal"
+                            android:textSize="10sp"></Button>
+
+                    <EditText
+                            android:id="@+id/aisle_task_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="请输入事件数量"
+                            android:textSize="10dp"
+                            android:numeric="integer"></EditText>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                    android:id="@+id/bound_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/test_1"
+                    android:layout_marginBottom="10dp"
+                    android:background="#000000" />
+
+            <TextView
+                    android:id="@+id/qimei_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bound_2"
+                    android:text="Qimei测试"
+                    android:visibility="gone"
+                    android:textSize="20sp" />
+
+            <LinearLayout
+                    android:id="@+id/qimei_test_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_below="@id/qimei_test">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="当前Qimei:"
+                        android:textSize="17sp" />
+
+                <TextView
+                        android:id="@+id/show_qimei"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/refresh_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/qimei_test_2"
+                    android:visibility="gone"
+                    android:text="同步获取Qimei" />
+
+            <Button
+                    android:id="@+id/refresh_oaid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/refresh_btn"
+                    android:visibility="gone"
+                    android:onClick="refreshOaid"
+                    android:text="同步获取Oaid" />
+
+            <View
+                    android:id="@+id/bound_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/refresh_btn"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="gone"
+                    android:background="#000000" />
+
+            <TextView
+                    android:id="@+id/params_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bound_3"
+                    android:text="Params测试"
+                    android:textSize="20sp" />
+
+            <LinearLayout
+                    android:id="@+id/params_test2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/params_test">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="setBeaconParams"
+                        android:text="设置ID参数" />
+
+            </LinearLayout>
+
+            <View
+                    android:id="@+id/bound_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/params_test2"
+                    android:layout_marginBottom="10dp"
+                    android:background="#000000" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/sdkVersion"
+                    android:layout_below="@id/bound_4"
+                    android:orientation="vertical">
+
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="showBeaconThread"
+                        android:text="查看当前线程状态" />
+
+                <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    <TextView
+                            android:id="@+id/beacon_thread_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/sdkVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_above="@id/power"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SDK Version: "
+                        android:textSize="20sp" />
+
+                <TextView
+                        android:id="@+id/show_sdk_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Powered By Beacon" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

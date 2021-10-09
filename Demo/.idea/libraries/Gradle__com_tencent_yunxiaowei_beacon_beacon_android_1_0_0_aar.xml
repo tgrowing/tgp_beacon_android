@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.tencent.yunxiaowei.beacon:beacon-android:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/jars/libs/r-classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,247 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+MERGED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:2:1-19:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/18cae24c51ad027e1330fbf0f5286c1a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:2:1-19:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/21b7630befcc7d24007765277e09470b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2b3ee15551d42a2e89a9d113d51d209b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/15234a9d595c84d0b1c189e99e7679a8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2a5536e1d304374e55f8f0071c409a12/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/5bbb7f27d4796368bb7c499b40f0b289/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/bb21cebb0ebbd02e8ce1e0ddcfa2277d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2031b1db4cb112e0251b66f4e1c3a688/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2547f413e2c4a124cddaabd9e95bf59e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/a654a8bb0114c890e75e4d0433a638c5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/a2043cb804ec60eaf565381d4cce32d2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/97d8de0e4d53cfdb3bbc06717e29c00f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/374c6285119d465f03fd7472cb89928d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ff9090bcfe53959be14b30b9fd55294f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/09610ba2f49a8617c1307ad7289e1dc8/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ffbd60b3bc73e94a2d5bea31f837953f/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1ed506c1fbe926fb459cf519fb813909/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/01c61f71717489540ce3c5b075cda1c5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/4a103618a993637a998723762e59b394/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/6a0d13d2246d8292a701b8ce7222507d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/3b44248ba86e0c309444d7587d49ead5/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/e7aef218226d745a9a78f843c638aeba/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/0fe0b8f9fec4a28c88062f47065a64df/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/9d1079d5795d2a0bfd56fd729e10b115/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/53dadb7040e2926f1b39debbfe01017b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/554fba8c863615d07f986e52b8327344/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+	package
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:3:5-47
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:1-56:12
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:5:5-79
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:13:5-79
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:13:5-79
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:5:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:6:5-76
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:14:5-76
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:14:5-76
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:6:22-73
+uses-permission#android.permission.INTERNET
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:7:5-67
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:12:5-67
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:12:5-67
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:8:5-75
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:8:22-72
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:9:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:10:22-78
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:11:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:12:5-76
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:12:22-73
+application
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:14:5-54:19
+MERGED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:11:5-17:19
+MERGED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:11:5-17:19
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:16:5-17:19
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:16:5-17:19
+MERGED from [com.android.support:support-compat:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/09610ba2f49a8617c1307ad7289e1dc8/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/09610ba2f49a8617c1307ad7289e1dc8/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ffbd60b3bc73e94a2d5bea31f837953f/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ffbd60b3bc73e94a2d5bea31f837953f/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/09610ba2f49a8617c1307ad7289e1dc8/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:20:9-35
+	android:label
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:18:9-41
+	android:icon
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:17:9-43
+	android:allowBackup
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:16:9-35
+	android:theme
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:21:9-40
+	android:networkSecurityConfig
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:19:9-69
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:15:9-28
+uses-library#org.apache.http.legacy
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:22:9-24:40
+	android:required
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:24:13-37
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:23:13-50
+meta-data#UMENG_APPKEY
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:26:9-28:56
+	android:value
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:28:13-53
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:27:13-40
+meta-data#UMENG_CHANNEL
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:29:9-31:36
+	android:value
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:31:13-33
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:30:13-41
+meta-data#APPKEY_DENGTA
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:33:9-35:48
+	android:value
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:35:13-45
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:34:13-41
+meta-data#CHANNEL_DENGTA
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:37:9-39:36
+	android:value
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:39:13-33
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:38:13-42
+activity#com.tencent.beacon.beaconmodules.MainActivity
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:41:9-47:20
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:41:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:42:13-46:29
+action#android.intent.action.MAIN
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:43:17-69
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:43:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:45:17-77
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:45:27-74
+service#com.tencent.beacon.beaconmodules.BeaconService
+ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:48:9-51:42
+	android:process
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:51:13-39
+	android:exported
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:50:13-36
+	android:name
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml:49:13-42
+uses-sdk
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+MERGED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:7:5-9:41
+MERGED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/18cae24c51ad027e1330fbf0f5286c1a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/18cae24c51ad027e1330fbf0f5286c1a/AndroidManifest.xml:20:5-44
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:7:5-9:41
+MERGED from [com.tencent.yunxiaowei.beacon:beacon-android:1.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1eb741fa71d06d680619fc8f483c6792/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/21b7630befcc7d24007765277e09470b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/21b7630befcc7d24007765277e09470b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2b3ee15551d42a2e89a9d113d51d209b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2b3ee15551d42a2e89a9d113d51d209b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/15234a9d595c84d0b1c189e99e7679a8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/15234a9d595c84d0b1c189e99e7679a8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2a5536e1d304374e55f8f0071c409a12/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2a5536e1d304374e55f8f0071c409a12/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/5bbb7f27d4796368bb7c499b40f0b289/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/5bbb7f27d4796368bb7c499b40f0b289/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/bb21cebb0ebbd02e8ce1e0ddcfa2277d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/bb21cebb0ebbd02e8ce1e0ddcfa2277d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2031b1db4cb112e0251b66f4e1c3a688/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2031b1db4cb112e0251b66f4e1c3a688/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2547f413e2c4a124cddaabd9e95bf59e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/2547f413e2c4a124cddaabd9e95bf59e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/a654a8bb0114c890e75e4d0433a638c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/a654a8bb0114c890e75e4d0433a638c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/a2043cb804ec60eaf565381d4cce32d2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/a2043cb804ec60eaf565381d4cce32d2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/97d8de0e4d53cfdb3bbc06717e29c00f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/97d8de0e4d53cfdb3bbc06717e29c00f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/374c6285119d465f03fd7472cb89928d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/374c6285119d465f03fd7472cb89928d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ff9090bcfe53959be14b30b9fd55294f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ff9090bcfe53959be14b30b9fd55294f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/09610ba2f49a8617c1307ad7289e1dc8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/09610ba2f49a8617c1307ad7289e1dc8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ffbd60b3bc73e94a2d5bea31f837953f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ffbd60b3bc73e94a2d5bea31f837953f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1ed506c1fbe926fb459cf519fb813909/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/1ed506c1fbe926fb459cf519fb813909/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/01c61f71717489540ce3c5b075cda1c5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/01c61f71717489540ce3c5b075cda1c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/4a103618a993637a998723762e59b394/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/4a103618a993637a998723762e59b394/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/6a0d13d2246d8292a701b8ce7222507d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/6a0d13d2246d8292a701b8ce7222507d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/3b44248ba86e0c309444d7587d49ead5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/3b44248ba86e0c309444d7587d49ead5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/e7aef218226d745a9a78f843c638aeba/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/e7aef218226d745a9a78f843c638aeba/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/0fe0b8f9fec4a28c88062f47065a64df/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/0fe0b8f9fec4a28c88062f47065a64df/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/9d1079d5795d2a0bfd56fd729e10b115/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/9d1079d5795d2a0bfd56fd729e10b115/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/53dadb7040e2926f1b39debbfe01017b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/53dadb7040e2926f1b39debbfe01017b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/554fba8c863615d07f986e52b8327344/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/554fba8c863615d07f986e52b8327344/AndroidManifest.xml:20:5-44
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+		ADDED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/aimeerong/Desktop/CEM_Workspace/tgp_beacon_android/Demo/app/src/main/AndroidManifest.xml
+activity#pub.devrel.easypermissions.AppSettingsDialogHolderActivity
+ADDED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:12:9-16:66
+	android:label
+		ADDED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:15:13-29
+	android:exported
+		ADDED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:14:13-37
+	android:theme
+		ADDED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:16:13-63
+	android:name
+		ADDED from [pub.devrel:easypermissions:2.0.1] /Users/aimeerong/.gradle/caches/transforms-2/files-2.1/ba2f96441f51d0330c27383313893cc0/AndroidManifest.xml:13:13-86

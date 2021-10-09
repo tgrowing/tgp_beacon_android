@@ -1,0 +1,4 @@
+# Referenced at /Users/aimeerong/Desktop/CEM_Workspace/beacon-android/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml:20
+-keep class android.support.v4.app.CoreComponentFactory { <init>(); }
+# Referenced at /Users/aimeerong/Desktop/CEM_Workspace/beacon-android/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml:20
+-keep class com.tencent.beacon.beaconmodules.App { <init>(); }

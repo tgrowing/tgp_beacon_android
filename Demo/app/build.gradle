@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.tencent.beacon.beaconmodules"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.tencent.yunxiaowei.beacon:beacon-android:1.0.0'
+//    implementation files('libs/beacon-android.aar')
+    implementation 'com.tencent.beacon:beacon-adapter-android:1.0.3'
+    implementation 'pub.devrel:easypermissions:2.0.1'
+
+    implementation 'org.apache.commons:commons-lang3:3.8.1'
+
+    implementation ("com.squareup.okhttp3:okhttp:3.9.0")
+}
