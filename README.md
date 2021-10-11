@@ -52,7 +52,6 @@ dependencies {
 ```
 其他权限（可以不申请）
 ```
-<!--    没有此权限时imsi imei获取为空字符串  -->
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -209,11 +208,7 @@ public enum EventType {
     // 普通事件
     NORMAL,
     // 实时事件
-    REALTIME,
-    // 实时上报事件(WNS)
-    IMMEDIATE_WNS,
-    // 实时上报事件(MSF)
-    IMMEDIATE_MSF
+    REALTIME
 }
 ```
 ## BeaconPubParams
