@@ -78,13 +78,15 @@ android{
 
 ### 初始化SDK
 
-在 **Application** 的 **onCreate()** 方法中调用 **BeaconReport.getInstance.start（）** 初始化 SDK：
+在 **Application** 的 **onCreate()** 方法中调用 **BeaconReport.getInstance.start()** 初始化 SDK。其中私有化版本可通过setUploadHost和setConfigHost设置自定义上报域名和自定义策略域名。
 
 ```java
 // 配置项详情参考后文BeaconConfig介绍，除AndroidID外，如不清楚可以都不填
 BeaconConfig config = BeaconConfig.builder()
 			 .setAndroidID("aaa") // 重要，不设置androidID会影响数据监控(对业务数据无影响)
-             .build();
+			 .setUploadHost("vibeacon.onezapp.com")// 可选，私有化设置自定义上报域名
+			 .setConfigHost("vibeaconstr.onezapp.com")// 可选，私有化设置自定义策略域名
+			 .build();
 BeaconReport beaconReport = BeaconReport.getInstance();
 beaconReport.setAppVersion("填入您的app版本"); // 可选
 beaconReport.setChannelID("填入您的channelid"); // 可选
@@ -92,9 +94,8 @@ beaconReport.setChannelID("填入您的channelid"); // 可选
  *  其他配置 如设置userid ,设置qq，以及配置权限采集开关，详情可查看后续功能介绍模块
  */
 beaconReport.start(this, APP_KEY, config);
+
 ```
-
-
 
 ### 上报事件
 
@@ -165,7 +166,8 @@ BeaconEvent event = BeaconEvent.builder()
                 .withIsSucceed(true)// 非必须，默认为true
                 .build();
 ```
-BeaconConfig 在初始化时传入配置，非必须传入
+## BeaconConfig 
+在初始化时传入配置，除androidID外，其他都可以不填
 ```java
 public class BeaconConfig {
    private final int maxDBCount;//DB存储的最大事件条数(实时和普通分开计算)，默认为1万条
@@ -193,6 +195,13 @@ public class BeaconConfig {
          .setRealtimePollingTime(1000)
          .setHttpAdapter(OkHttpAdapter.create(new OkHttpClient()))
          .build();
+```
+### 设置自定义域名
+```java
+BeaconConfig.builder()
+.setUploadHost("vibeacon.onezapp.com")
+.setConfigHost("vibeaconstr.onezapp.com")
+.build();
 ```
 ## EventResult
 ```java
