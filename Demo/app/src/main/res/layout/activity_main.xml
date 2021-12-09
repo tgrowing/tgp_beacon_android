@@ -8,6 +8,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
+    <TextView
+            android:id="@+id/msg_tv"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="#f1f3fa"
+            android:scrollbars="vertical"
+            android:hint="执行结果"
+            android:textSize="14sp" />
+
+    <View
+            android:id="@+id/bound"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/msg_tv"
+            android:layout_marginBottom="10dp"
+            android:background="#000000" />
 
     <ScrollView
             android:layout_width="match_parent"
@@ -19,24 +35,125 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+            <RadioGroup
+                    android:id="@+id/versionRadioGroup"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="40dp">
+                <RadioButton
+                        android:id="@+id/saasRadio"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="SaaS版(测试默认)"
+                        android:checked="true"
+                        android:layout_weight="1"/>
+                <RadioButton
+                        android:id="@+id/privateRadio"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="私有化版本"
+                        android:layout_weight="1"/>
+            </RadioGroup>
+
+        <LinearLayout
+                android:id="@+id/private_layout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <TextView
-                    android:id="@+id/title1"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:text="基本信息"/>
+
+            <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="12sp"
+                    android:text="私有化版本填写，SaaS版默认可以不填，保存后App会自动重启"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                <TextView
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="上报域名(可空)"/>
+                <EditText
+                        android:hint="vibeacon.onezapp.com"
+                        android:id="@+id/eventLogEditText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="40dp">
+                <TextView
+                        android:text="APP KEY"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+                <EditText
+                        android:text="KU4W0G2W3KY951Z7"
+                        android:layout_weight="1"
+                        android:id="@+id/appKeyEdit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"/>
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/noteText"
+                    android:visibility="gone"
+                    android:text="若使用以上默认主appkey，无需设置重启。如需更改，重启后生效"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/gray"
+                    android:textSize="10sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="功能测试"
-                    android:textSize="20sp" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:onClick="setAppkeyAndDomain"
+                    android:textSize="10dp"
+                    android:textColor="@color/colorAccent"
+                    android:text="保存(App自动重启)" />
 
             <View
-                    android:id="@+id/bound_1"
+                    android:id="@+id/bound_new"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@id/title1"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="#000000" />
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <TextView
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="18sp"
+                        android:text="自定义事件："/>
+
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -47,7 +164,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp">
                         <TextView
-                            android:text="SUB APP KEY"
+                            android:text="SUB APP KEY(可空)"
                             android:gravity="center_vertical"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
@@ -94,7 +211,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="自定义参数（可空）"/>
+                    android:text="自定义参数(可空)"/>
                 <EditText
                     android:id="@+id/manualParams"
                     android:layout_width="0dp"
@@ -114,26 +231,27 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
-                    android:background="@android:color/black"></LinearLayout>
+                    android:background="@android:color/black" />
 
             <LinearLayout
                     android:id="@+id/test_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/bound_1"
                     android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="App上报："
+                        android:textSize="18sp" />
 
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="App上报"
-                            android:textSize="18sp" />
 
                     <Button
                             android:layout_width="40dp"
@@ -195,6 +313,7 @@
                             android:layout_height="wrap_content"
                             android:onClick="reportMainDTRealTime"
                             android:textSize="10dp"
+                            android:visibility="gone"
                             android:text="大同实时" />
 
                     <Button
@@ -202,6 +321,7 @@
                             android:layout_height="wrap_content"
                             android:onClick="reportMainDTNormal"
                             android:textSize="10dp"
+                            android:visibility="gone"
                             android:text="大同普通" />
 
                     <Button
@@ -239,6 +359,12 @@
                             android:textSize="10dp"
                             android:text="实时事件参数为空" />
 
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="reportByWNS"
+                            android:textSize="10dp"
+                            android:text="WNS立即上报事件" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -247,16 +373,19 @@
                         android:orientation="horizontal"
                         android:background="@android:color/black"></LinearLayout>
 
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="app上报（主通道appkey为空）"
+                        android:textSize="13sp" />
+
                 <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
-
-                    <TextView
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:text="app上报（主通道appkey为空）"
-                            android:textSize="13sp" />
 
                     <Button
                             android:layout_width="wrap_content"
@@ -270,6 +399,17 @@
                             android:onClick="reportMainRealtimeNone"
                             android:text="实时事件" />
 
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="stopReport"
+                            android:text="停止上报" />
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="resumeReport"
+                            android:text="恢复上报" />
 
                 </LinearLayout>
 
@@ -279,16 +419,18 @@
                         android:orientation="horizontal"
                         android:background="@android:color/black"></LinearLayout>
 
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="子通道上报"
+                        android:textSize="18sp" />
+
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="子通道上报"
-                            android:textSize="18sp" />
 
                     <Button
                             android:layout_width="40dp"
@@ -343,6 +485,7 @@
                             android:layout_height="wrap_content"
                             android:onClick="reportSubDTRealTime"
                             android:textSize="10dp"
+                            android:visibility="gone"
                             android:text="大同实时" />
 
                     <Button
@@ -350,6 +493,7 @@
                             android:layout_height="wrap_content"
                             android:onClick="reportSubDTNormal"
                             android:textSize="10dp"
+                            android:visibility="gone"
                             android:text="大同普通" />
 
                     <Button
@@ -411,14 +555,16 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:onClick="reportOldNormal"
-                            android:text="普通事件" />
+                            android:text="普通事件"
+                            android:layout_marginLeft="10dp" />
 
                     <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:onClick="reportOldRealtime"
-                            android:text="实时事件" />
+                            android:text="实时事件"
+                            android:layout_marginLeft="10dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -437,14 +583,16 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:onClick="reportOldSubNormal"
-                            android:text="普通事件" />
+                            android:text="普通事件"
+                            android:layout_marginLeft="10dp" />
 
                     <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:onClick="reportOldSubRealtime"
-                            android:text="实时事件" />
+                            android:text="实时事件"
+                            android:layout_marginLeft="10dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -482,6 +630,7 @@
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:text="大同实时事件"
+                            android:visibility="gone"
                             android:onClick="reportMainManyDTRealtime"
                             android:textSize="10sp"></Button>
 
@@ -489,6 +638,7 @@
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:text="大同普通事件"
+                            android:visibility="gone"
                             android:onClick="reportMainManyDTNormal"
                             android:textSize="10sp"></Button>
 
@@ -533,6 +683,7 @@
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:text="大同实时事件"
+                            android:visibility="gone"
                             android:onClick="reportSubManyDTRealtime"
                             android:textSize="10sp"></Button>
 
@@ -540,6 +691,7 @@
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:text="大同普通事件"
+                            android:visibility="gone"
                             android:onClick="reportSubManyDTNormal"
                             android:textSize="10sp"></Button>
 
@@ -615,19 +767,19 @@
                     android:visibility="gone"
                     android:background="#000000" />
 
-            <TextView
-                    android:id="@+id/params_test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/bound_3"
-                    android:text="Params测试"
-                    android:textSize="20sp" />
-
             <LinearLayout
                     android:id="@+id/params_test2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/params_test">
+
+                <TextView
+                        android:id="@+id/params_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bound_3"
+                        android:text="Params测试"
+                        android:textSize="20sp" />
 
                 <Button
                         android:layout_width="wrap_content"
@@ -669,19 +821,18 @@
                 </ScrollView>
             </LinearLayout>
 
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="showH5Page"
+                    android:text="H5 测试" />
+
             <LinearLayout
                     android:id="@+id/sdkVersion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_above="@id/power"
                     android:orientation="horizontal">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="SDK Version: "
-                        android:textSize="20sp" />
 
                 <TextView
                         android:id="@+id/show_sdk_version"
@@ -690,15 +841,6 @@
                         android:textSize="20sp" />
 
             </LinearLayout>
-
-            <TextView
-                    android:id="@+id/power"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="Powered By Beacon" />
         </LinearLayout>
 
     </ScrollView>

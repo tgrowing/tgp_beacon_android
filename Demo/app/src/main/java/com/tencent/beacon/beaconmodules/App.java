@@ -2,9 +2,14 @@ package com.tencent.beacon.beaconmodules;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.beacon.BeaconAdapter;
-//import com.tencent.beacon.base.info.QimeiWrapper;
+import com.tencent.beacon.event.immediate.BeaconImmediateReportCallback;
+import com.tencent.beacon.event.immediate.BeaconTransferArgs;
+import com.tencent.beacon.event.immediate.IBeaconImmediateReport;
+import com.tencent.beacon.beaconmodules.util.BeaconPrefs;
 import com.tencent.beacon.event.open.BeaconConfig;
 import com.tencent.beacon.event.open.BeaconEvent;
 import com.tencent.beacon.event.open.BeaconReport;
@@ -25,7 +30,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 //        DoraemonKit.install(this, null, "pId");
-        beforeInit();
+//        beforeInit();
         initBeacon();
         context = this;
     }
@@ -47,17 +52,29 @@ public class App extends Application {
 
     private void initBeacon() {
         Log.i(TAG, "==============Welcome to Beacon===============");
+        BeaconPrefs prefs = new BeaconPrefs(this);
+        String appKey = prefs.getString(BeaconPrefs.PREFS_KEY_APPKEY, null);
+        String eventHost = prefs.getString(BeaconPrefs.PREFS_KEY_UPLOAD_HOST, null);
+        if (TextUtils.isEmpty(appKey)) {
+            appKey = SDKTest.MAIN_APP_KEY;
+        }
+        Log.i(App.TAG, "setUploadHost(event): " + eventHost + ", appkey:" + appKey);
+
         BeaconConfig config = BeaconConfig.builder()
                 .maxDBCount(20000)
-                .setNormalPollingTime(3000)
-                .setRealtimePollingTime(1000)
+                .setNormalPollingTime(3500)
+                .setRealtimePollingTime(1500)
+                .setNormalUploadNum(65)
+                .setRealtimeUploadNum(65)
                 .setForceEnableAtta(true)
                 .pagePathEnable(false)
+                .setIsSocketMode(false)
+                .setUploadHost(eventHost)
+                .setModel(Build.MODEL)
 //                .setHttpAdapter(OkHttpAdapter.create(new OkHttpClient()))
 //                .setImei("a2")
 //                .setImsi("a4")
 //                .setMac("a6")
-//                .setModel("a10")
 //                .setWifiMacAddress("a20")
 //                .setWifiSSID("a69")
 //                .setOaid("a144")
@@ -65,8 +82,10 @@ public class App extends Application {
         BeaconReport beaconReport = BeaconReport.getInstance();
         beaconReport.setCollectProcessInfo(false);
         beaconReport.setStrictMode(true);
-        beaconReport.setAppVersion("1.1.1.1");
+        beaconReport.setAppVersion("1.2.2");
+        beaconReport.setChannelID("demo-10001");
         beaconReport.setLogAble(true);
+        beaconReport.setAndroidID("androidid-github-demo");
 //        beaconReport.setImei("A2");
 //        beaconReport.setImsi("A4");
 //        beaconReport.setMac("A6");
@@ -78,11 +97,9 @@ public class App extends Application {
 //        beaconReport.setCollectAndroidID(false);
 //        beaconReport.setStrictMode(false);
 //        beaconReport.start(this, new TunnelInfo(SDKTest.MAIN_APP_KEY, "123", "45"), config);
-        beaconReport.start(this, SDKTest.MAIN_APP_KEY, config);
-        Log.i(TAG, "init cost time: " + (System.currentTimeMillis() - l));
-//        Log.i(TAG, "init getQimei16: " + QimeiWrapper.getQimei().getQimei16() + "getQimei36: "
-//                + QimeiWrapper.getQimei().getQimei36());
 
+        beaconReport.start(this, appKey, config);
+        Log.i(TAG, "init cost time: " + (System.currentTimeMillis() - l));
         BeaconAdapter.registerTunnel(SDKTest.SUB_APP_KEY, "bb", "1001");
     }
 }

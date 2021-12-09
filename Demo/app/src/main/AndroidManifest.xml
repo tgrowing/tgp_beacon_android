@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tencent.beacon.beaconmodules">
+        package="com.tencent.beacon.beaconmodules">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -10,33 +10,36 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 
     <application
-        android:name=".App"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_security_config"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+            android:name=".App"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:networkSecurityConfig="@xml/network_security_config"
+            android:supportsRtl="true"
+            android:usesCleartextTraffic="true"
+            android:theme="@style/AppTheme">
         <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
+                android:name="org.apache.http.legacy"
+                android:required="false" />
 
         <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="58eef18275ca355b01001e9f" />
+                android:name="UMENG_APPKEY"
+                android:value="58eef18275ca355b01001e9f" />
         <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="1004" />
+                android:name="UMENG_CHANNEL"
+                android:value="1004" />
 
         <meta-data
-            android:name="APPKEY_DENGTA"
-            android:value="0M000A1RC72MXXRH" />
+                android:name="APPKEY_DENGTA"
+                android:value="0M000A1RC72MXXRH" />
 
         <meta-data
-            android:name="CHANNEL_DENGTA"
-            android:value="1001" />
+                android:name="CHANNEL_DENGTA"
+                android:value="1001" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -45,12 +48,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".WebActivity" />
+
         <service
-            android:name=".BeaconService"
-            android:exported="true"
-            android:process=":service" />
+                android:name=".BeaconService"
+                android:exported="true"
+                android:process=":service" />
         <!--        <activity android:name=".MainActivity2"-->
         <!--            android:process="test.process"/>-->
+        <!-- service -->
+        <!-- WNS service,注意进程名为  :wnsnetservice ，其它组件请不要使用这个进程名 -->
+        <service
+                android:name="com.tencent.wnsnetsdk.service.WnsMain"
+                android:exported="false"
+                android:process=":wnsnetservice">
+            <intent-filter>
+                <action android:name="com.tencent.wnsnetsdk.service.WnsMain"/>
+            </intent-filter>
+        </service>
+        <!-- 注册WNS心跳接收器 -->
+        <receiver
+                android:name="com.tencent.wnsnetsdk.base.os.clock.AlarmClockReceiver"
+                android:exported="false"
+                android:process=":wnsnetservice">
+            <intent-filter>
+                <action android:name="wns.heartbeat"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-# 接入说明
+# 私有化版本接入说明
 
 
 
@@ -78,12 +78,13 @@ android{
 
 ### 初始化SDK
 
-在 **Application** 的 **onCreate()** 方法中调用 **BeaconReport.getInstance.start()** 初始化 SDK。
+在 **Application** 的 **onCreate()** 方法中调用 **BeaconReport.getInstance.start()** 初始化 SDK。其中私有化版本可通过setUploadHost和setConfigHost设置自定义上报域名。
 
 ```java
 // 配置项详情参考后文BeaconConfig介绍，除AndroidID外，如不清楚可以都不填
 BeaconConfig config = BeaconConfig.builder()
 			 .setAndroidID("aaa") // 重要，不设置androidID会影响数据监控(对业务数据无影响)
+			 .setUploadHost("vibeacon.onezapp.com")// 私有化部署设置自定义上报域名
 			 .build();
 BeaconReport beaconReport = BeaconReport.getInstance();
 beaconReport.setAppVersion("填入您的app版本"); // 可选
@@ -193,6 +194,12 @@ public class BeaconConfig {
          .setRealtimePollingTime(1000)
          .setHttpAdapter(OkHttpAdapter.create(new OkHttpClient()))
          .build();
+```
+### 私有化部署设置自定义域名
+```java
+BeaconConfig.builder()
+.setUploadHost("vibeacon.onezapp.com")
+.build();
 ```
 ## EventResult
 ```java

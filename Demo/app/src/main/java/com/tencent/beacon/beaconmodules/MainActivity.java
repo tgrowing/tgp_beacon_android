@@ -4,8 +4,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 import com.tencent.beacon.BeaconAdapter;
 //import com.tencent.beacon.base.info.QimeiWrapper;
 //import com.tencent.beacon.base.util.ELog;
+import com.tencent.beacon.beaconmodules.util.BeaconPrefs;
 import com.tencent.beacon.beaconmodules.util.TestUtils;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.event.open.BeaconEvent;
@@ -42,15 +46,22 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
     private ScheduledExecutorService executorService;
     private boolean isStartLookThread;
     private Intent serviceIntent;
+    private BeaconPrefs prefs;
+    private EditText eventET;
+    private EditText appkeyET;
+    private TextView msgTV;
 
+    private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        prefs = new BeaconPrefs(this);
+        mHandler = new Handler(Looper.getMainLooper());
 
         executorService = Executors.newScheduledThreadPool(6);
-//        initView();
+        initView();
         //syncGetQimei();
         serviceIntent = new Intent(this, BeaconService.class);
         startService(serviceIntent);
@@ -78,8 +89,7 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
                         Iterator<String> keyIter = jsonObject.keys();
                         String key;
                         String value;
-                        while (keyIter.hasNext())
-                        {
+                        while (keyIter.hasNext()) {
                             key = (String) keyIter.next();
                             value = jsonObject.getString(key);
                             params.put(key, value);
@@ -98,10 +108,26 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
                 }
                 BeaconEvent normal = builder.build();
                 EventResult result = BeaconReport.getInstance().report(normal);
+                printMsg(eventName, params.toString(), result);
                 toastResult(result.eventID, result.errorCode, result.errMsg);
             }
         });
     }
+
+    public void setAppkeyAndDomain(View view) {
+        String event = eventET.getText().toString();
+        String appKey = appkeyET.getText().toString();
+        if (TextUtils.isEmpty(appKey)) {
+            Toast.makeText(this, "APP KEY已清空，使用默认appkey上报：" + SDKTest.MAIN_APP_KEY, Toast.LENGTH_LONG).show();
+        }
+        Toast.makeText(this, "即将重启...", Toast.LENGTH_LONG).show();
+        Log.i(App.TAG,
+                "setUploadHost(event): " + event + ", appkey:" + appKey);
+        prefs.setString(BeaconPrefs.PREFS_KEY_APPKEY, appKey);
+        prefs.setString(BeaconPrefs.PREFS_KEY_UPLOAD_HOST, event);
+        restartApp();
+    }
+
 
     private void pressTest() {
         TestUtils.startPressTest(SDKTest.MAIN_APP_KEY, "main_press", SDKTest.productRandomParams(),
@@ -121,9 +147,44 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
     }
 
     private void initView() {
-        TextView sdkVersion = findViewById(R.id.show_sdk_version);
-        sdkVersion.setText(BeaconReport.getInstance().getSDKVersion());
+        View privateLayout = findViewById(R.id.private_layout);
+        TextView noteView = findViewById(R.id.noteText);
+        /*RadioGroup radioGroup = ((RadioGroup)(findViewById(R.id.versionRadioGroup)));
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.saasRadio) {
+                    privateLayout.setVisibility(View.GONE);
+                    noteView.setVisibility(View.VISIBLE);
+                    clearPrivateHost();
+                } else if (checkedId == R.id.privateRadio) {
+                    privateLayout.setVisibility(View.VISIBLE);
+                    noteView.setVisibility(View.GONE);
+                }
+            }
+        });*/
+
+        msgTV = findViewById(R.id.msg_tv);
+        msgTV.setMovementMethod(ScrollingMovementMethod.getInstance());
+        eventET = ((EditText) findViewById(R.id.eventLogEditText));
+        appkeyET = ((EditText) findViewById(R.id.appKeyEdit));
+
+        String appKey = prefs.getString(BeaconPrefs.PREFS_KEY_APPKEY, null);
+        if (!TextUtils.isEmpty(appKey)) {
+            appkeyET.setText(appKey);
+        }
+        String eventHost = prefs.getString(BeaconPrefs.PREFS_KEY_UPLOAD_HOST, null);
+        eventET.setText(eventHost);
+        TextView sdkVersion = findViewById(R.id.show_sdk_version);
+        sdkVersion.setText("SDK Version: " + BeaconReport.getInstance().getSDKVersion() + "\n TGP Version: " + BeaconReport.TGP_SDK_VERSION);
+
+    }
+
+    private void clearPrivateHost() {
+        prefs.setString(BeaconPrefs.PREFS_KEY_UPLOAD_HOST, null);
+        prefs.setString(BeaconPrefs.PREFS_KEY_CONFIG_HOST, null);
+        Toast.makeText(this, "saas 版本已清空设置域名，重启后生效", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -163,12 +224,15 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
 
     // 不加AppKey默认是主通道App
     public void reportMainNormal(View view) {
+        BeaconReport.getInstance().setCollectProcessInfo(true);
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withCode("main_normal")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.NORMAL)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_normal", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -179,6 +243,7 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
                 .withType(EventType.NORMAL)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_normal", "", result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -193,12 +258,14 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
     }
 
     public void reportMainRealtime(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withCode("main_realtime")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_realtime", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -209,67 +276,80 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
                 .withType(EventType.REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_realtime", "", result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
     public void reportMainDTRealTime(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withCode("main_realtime_DT")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.DT_REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_realtime_DT", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
     public void reportMainNormalWithoutCode(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withCode("")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.NORMAL)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
     public void reportMainRealtimeWithoutCode(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withCode("")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
     public void reportMainNormalLarge(View view) {
+        Map params = SDKTest.productRandomParamsLong();
         BeaconEvent normal = BeaconEvent.builder()
                 .withCode("main_normal")
-                .withParams(SDKTest.productRandomParamsLong())
+                .withParams(params)
                 .withType(EventType.NORMAL)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_normal", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
     public void reportMainRealtimeLarge(View view) {
+        Map params = SDKTest.productRandomParamsLong();
         BeaconEvent normal = BeaconEvent.builder()
                 .withCode("main_realtime")
-                .withParams(SDKTest.productRandomParamsLong())
+                .withParams(params)
                 .withType(EventType.REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_realtime", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
 
     public void reportMainNormalGreater(View view) {
+        Map params = SDKTest.productRandomParams_10kb();
         BeaconEvent normal = BeaconEvent.builder()
                 .withCode("main_normal")
-                .withParams(SDKTest.productRandomParams_10kb())
+                .withParams(params)
                 .withType(EventType.NORMAL)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_realtime", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -284,35 +364,41 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
     }
 
     public void reportMainNormalNone(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withAppKey("")
                 .withCode("main_normal")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.NORMAL)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_normal", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
     public void reportMainRealtimeNone(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withAppKey("")
                 .withCode("main_realtime")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("main_realtime", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
     public void reportSubRealtime(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withAppKey(SDKTest.SUB_APP_KEY)
                 .withCode("sub_realtime")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("sub_realtime", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -320,10 +406,10 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
         BeaconEvent normal = BeaconEvent.builder()
                 .withAppKey(SDKTest.SUB_APP_KEY)
                 .withCode("sub_realtime")
-                //.withParams(SDKTest.productRandomParams())
                 .withType(EventType.REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("sub_realtime", "", result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -344,13 +430,15 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
     }
 
     public void reportSubRealtimeWithoutCode(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withAppKey(SDKTest.SUB_APP_KEY)
                 .withCode("")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.REALTIME)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -367,13 +455,15 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
     }
 
     public void reportSubNormal(View view) {
+        Map params = SDKTest.productRandomParams();
         BeaconEvent normal = BeaconEvent.builder()
                 .withAppKey(SDKTest.SUB_APP_KEY)
                 .withCode("sub_normal")
-                .withParams(SDKTest.productRandomParams())
+                .withParams(params)
                 .withType(EventType.NORMAL)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("sub_normal", params.toString(), result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -385,6 +475,7 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
                 .withType(EventType.NORMAL)
                 .build();
         EventResult result = BeaconReport.getInstance().report(normal);
+        printMsg("sub_normal", "", result);
         toastResult(result.eventID, result.errorCode, result.errMsg);
     }
 
@@ -696,5 +787,58 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
     public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
         Log.i(TAG, "onPermissionsDenied perms: " + perms);
 
+    }
+
+    public void showH5Page(View view) {
+        startActivity(new Intent(this, WebActivity.class));
+    }
+
+
+    /**
+     * 界面打印
+     */
+    public void printMsg(final String eventCode, final String params, final EventResult eventResult) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                boolean result = eventResult.errorCode == 0;
+                String msg = "入库结果: " + (result ? "成功" : "失败"
+                        + (result ? "" : "\n原因: " + eventResult.errMsg)) + "\neventID：" + eventResult.eventID
+                        + "\n事件名：" + eventCode + "\n事件参数：" + params;
+                msgTV.setText(msg);
+            }
+        });
+    }
+
+    public void restartApp() {
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, "restartApp");
+                final Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                //杀掉以前进程
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
+        }, 1500);
+    }
+
+
+    public void reportByWNS(View view) {
+        BeaconEvent beaconEvent = BeaconEvent.builder()
+                .withType(EventType.IMMEDIATE_WNS)
+                .withCode("immediate_event").build();
+        final EventResult result = BeaconReport.getInstance().report(beaconEvent);
+        Log.i(App.TAG, "immediate 记录成功 result: " + result.eventID);
+        Toast.makeText(this, "记录成功 eventID:" + result.eventID, Toast.LENGTH_SHORT).show();
+    }
+
+    public void stopReport(View view) {
+        BeaconReport.getInstance().stopReport(true);
+    }
+
+    public void resumeReport(View view) {
+        BeaconReport.getInstance().resumeReport();
     }
 }
