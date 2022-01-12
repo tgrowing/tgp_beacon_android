@@ -31,7 +31,7 @@ implementation 'com.tencent.yunxiaowei.beacon:beacon-android:【SDK对应的版�
 
 ```javascript
 dependencies {
-   implementation 'com.tencent.yunxiaowei.beacon:beacon-android:1.0.0'
+   implementation 'com.tencent.yunxiaowei.beacon:beacon-android:1.0.3'
 }
 ```
 
@@ -138,6 +138,46 @@ public void stopReport(boolean immediately);
 public void resumeReport();
 ```
 当调用了停止事件上报后需要恢复灯塔SDK轮询时调用。 
+
+### JS和App的通信
+集成了灯塔Web SDK的H5页面，在嵌入到App后，H5内的事件可以通过App进行发送，事件发送前会添加上App采集到的预置属性。该功能默认是关闭状态，如果需要开启，需要在H5端和App端同时进行配置，App端配置如下：
+
+Activity onCreate时，允许JS和App的通信，并传入当前webView。
+```java
+BeaconJsReport beaconJsReport = new BeaconJsReport();
+// 开启内嵌H5通过App上报埋点的通路
+beaconJsReport.enableBridge(webView);
+```
+注意：若webview有setWebChromeClient，需要实现继承自BeaconWebChromeClient的WebChromeClient，并在enableBridge时传入。若重写onConsoleMessage后return true拦截了消息，则SDK将不会处理h5传到app端的消息。若需使用app端和h5的通路，请保持不拦截。
+代码参考如下：
+```java
+// 实现继承自BeaconWebChromeClient的WebChromeClient，并在enableBridge时传入
+MyWebChromeClient myWebChromeClient = new MyWebChromeClient();
+mWebView.setWebChromeClient(myWebChromeClient);
+mBeaconJsReport.enableBridge(mWebView, myWebChromeClient);
+
+public class MyWebChromeClient extends BeaconWebChromeClient {
+    @Override
+    public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+        Log.i(TAG, "onConsoleMessage:" + consoleMessage.message());
+        // 注意：这里如果 return true 拦截了，SDK将不会处理h5传到app端的消息。若需使用 app 端和 h5 的通路，请保持不拦截
+        return super.onConsoleMessage(consoleMessage);
+    }
+
+    @Override 
+    public boolean onJsPrompt(WebView view, String url, String message, String defaultValue,
+            JsPromptResult result) {
+        Log.i(TAG, "onJsPrompt url:" + url + "， message：" + message + "， defaultValue：" + defaultValue);
+        return super.onJsPrompt(view, url, message, defaultValue, result);
+    }
+}
+```
+
+Activity onDestory时，关闭JS和App的通信
+```java
+// 关闭内嵌H5通过App上报埋点的通路
+beaconJsReport.disableBridge();
+```
 
 ### 获取当前SDK版本
 ```java

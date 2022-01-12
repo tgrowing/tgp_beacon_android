@@ -82,7 +82,7 @@ public class App extends Application {
         BeaconReport beaconReport = BeaconReport.getInstance();
         beaconReport.setCollectProcessInfo(false);
         beaconReport.setStrictMode(true);
-        beaconReport.setAppVersion("1.2.2");
+        beaconReport.setAppVersion("1.2.3");
         beaconReport.setChannelID("demo-10001");
         beaconReport.setLogAble(true);
         beaconReport.setAndroidID("androidid-github-demo");
