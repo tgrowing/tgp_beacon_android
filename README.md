@@ -31,7 +31,7 @@ implementation 'com.tencent.yunxiaowei.beacon:beacon-android:【SDK对应的版�
 
 ```javascript
 dependencies {
-   implementation 'com.tencent.yunxiaowei.beacon:beacon-android:1.0.3'
+   implementation 'com.tencent.yunxiaowei.beacon:beacon-android:1.0.4'
 }
 ```
 
