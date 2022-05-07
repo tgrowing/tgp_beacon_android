@@ -567,33 +567,6 @@
                             android:layout_marginLeft="10dp" />
                 </LinearLayout>
 
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="旧接口通道上报"
-                            android:textSize="18sp" />
-
-                    <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:onClick="reportOldSubNormal"
-                            android:text="普通事件"
-                            android:layout_marginLeft="10dp" />
-
-                    <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:onClick="reportOldSubRealtime"
-                            android:text="实时事件"
-                            android:layout_marginLeft="10dp" />
-                </LinearLayout>
 
                 <LinearLayout
                         android:layout_width="match_parent"
