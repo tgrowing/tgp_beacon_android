@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tencent.beacon.BeaconAdapter;
 //import com.tencent.beacon.base.info.QimeiWrapper;
 //import com.tencent.beacon.base.util.ELog;
 import com.tencent.beacon.beaconmodules.util.BeaconPrefs;
@@ -40,7 +39,8 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class MainActivity extends Activity implements EasyPermissions.PermissionCallbacks {
+public class MainActivity
+        extends Activity implements EasyPermissions.PermissionCallbacks {
 
     private static final String TAG = App.TAG;
     private ScheduledExecutorService executorService;
@@ -760,17 +760,17 @@ public class MainActivity extends Activity implements EasyPermissions.Permission
         Toast.makeText(this, isSuccess ? "上报成功" : "上报失败", Toast.LENGTH_SHORT).show();
     }
 
-    public void reportOldSubNormal(View view) {
-        boolean isSuccess = BeaconAdapter.onUserAction("old_sub_normal", true,
-                -1, -1, SDKTest.productRandomParams(), false);
-        Toast.makeText(this, isSuccess ? "上报成功" : "上报失败", Toast.LENGTH_SHORT).show();
-    }
+    // public void reportOldSubNormal(View view) {
+    //     boolean isSuccess = BeaconAdapter.onUserAction("old_sub_normal", true,
+    //             -1, -1, SDKTest.productRandomParams(), false);
+    //     Toast.makeText(this, isSuccess ? "上报成功" : "上报失败", Toast.LENGTH_SHORT).show();
+    // }
 
-    public void reportOldSubRealtime(View view) {
-        boolean isSuccess = BeaconAdapter.onUserAction("old_sub_realtime", true,
-                -1, -1, SDKTest.productRandomParams(), true, true);
-        Toast.makeText(this, isSuccess ? "上报成功" : "上报失败", Toast.LENGTH_SHORT).show();
-    }
+    // public void reportOldSubRealtime(View view) {
+    //     boolean isSuccess = BeaconAdapter.onUserAction("old_sub_realtime", true,
+    //             -1, -1, SDKTest.productRandomParams(), true, true);
+    //     Toast.makeText(this, isSuccess ? "上报成功" : "上报失败", Toast.LENGTH_SHORT).show();
+    // }
 
     public void refreshOaid(View view) {
 

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.beacon.BeaconAdapter;
 import com.tencent.beacon.event.immediate.BeaconImmediateReportCallback;
 import com.tencent.beacon.event.immediate.BeaconTransferArgs;
 import com.tencent.beacon.event.immediate.IBeaconImmediateReport;
@@ -100,6 +99,5 @@ public class App extends Application {
 
         beaconReport.start(this, appKey, config);
         Log.i(TAG, "init cost time: " + (System.currentTimeMillis() - l));
-        BeaconAdapter.registerTunnel(SDKTest.SUB_APP_KEY, "bb", "1001");
     }
 }

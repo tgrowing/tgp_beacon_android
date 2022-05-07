@@ -29,9 +29,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.tencent.yunxiaowei.beacon:beacon-android:1.0.4'
-//    implementation files('libs/beacon-android.aar')
-    implementation 'com.tencent.beacon:beacon-adapter-android:1.0.3'
+    implementation files('libs/beacon-android-release-1.0.5.aar')
+
+    // implementation 'com.tencent.yunxiaowei.beacon:beacon-android:1.0.4'
+    // implementation 'com.tencent.beacon:beacon-adapter-android:1.0.3'
+
     implementation 'pub.devrel:easypermissions:2.0.1'
 
     implementation 'org.apache.commons:commons-lang3:3.8.1'

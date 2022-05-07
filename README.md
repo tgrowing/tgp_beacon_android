@@ -4,45 +4,25 @@
 
 ## 集成灯塔分析SDK
 
-### 1. 添加maven仓库地址
-
-在 **project** 级别的 **build.gradle** 文件中添加以下仓库：
-
-```javascript
-allprojects {
-    repositories {
-		maven { url "https://mirrors.tencent.com/repository/maven/tencent_public/" }
-		maven {	url "https://mirrors.tencent.com/repository/maven/qmsp-oaid2" }
-    }
-}
-```
-
-### 2.  引入SDK
+### 1.  引入离线SDK
 
 在主 **module** 的 **build.gradle** 文件中添加 SDK 依赖：
 
 build.gradle添加如下依赖：
 
 ```java
-implementation 'com.tencent.yunxiaowei.beacon:beacon-android:【SDK对应的版本号】'
+implementation files('libs/beacon-android-【SDK对应的版本号】.aar')
 ```
+注意确保项目libs目录，包含离线sdk
 
-注意修改对应的版本号，如：
-
-```javascript
-dependencies {
-   implementation 'com.tencent.yunxiaowei.beacon:beacon-android:1.0.4'
-}
-```
-
-### 3. 配置混淆规则
+### 2. 配置混淆规则
 ```
 -keep class com.tencent.qimei.** { *;}
 -keep class com.tencent.qmsp.oaid2.** {*;}
 -keep class com.tencent.beacon.** { *;}
 ```
 
-### 4. 配置权限
+### 3. 配置权限
 
 必备权限
 ```
@@ -56,7 +36,7 @@ dependencies {
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
-### 5. 反裁剪配置
+### 4. 反裁剪配置
 由于Android release编译过程会默认把so做一个裁剪，而灯塔的so文件做过一些混淆加固，被裁剪后会导致so无法正常加载，所以需要加上下反裁剪配置
 ```
 android{
