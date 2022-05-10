@@ -122,11 +122,17 @@ public void resumeReport();
 ### JS和App的通信
 集成了灯塔Web SDK的H5页面，在嵌入到App后，H5内的事件可以通过App进行发送，事件发送前会添加上App采集到的预置属性。该功能默认是关闭状态，如果需要开启，需要在H5端和App端同时进行配置，App端配置如下：
 
-Activity onCreate时，允许JS和App的通信，并传入当前webView。
+1. Activity onCreate时，允许JS和App的通信，并传入当前webView。
 ```java
 BeaconJsReport beaconJsReport = new BeaconJsReport();
 // 开启内嵌H5通过App上报埋点的通路
 beaconJsReport.enableBridge(webView);
+```
+2. webview userAgent 添加自定义标记:isApp
+```
+// webview userAgent 添加自定义标记:isApp
+WebSettings webSettings = mWebView.getSettings();
+webSettings.setUserAgentString(userAgent + " isApp");
 ```
 注意：若webview有setWebChromeClient，需要实现继承自BeaconWebChromeClient的WebChromeClient，并在enableBridge时传入。若重写onConsoleMessage后return true拦截了消息，则SDK将不会处理h5传到app端的消息。若需使用app端和h5的通路，请保持不拦截。
 代码参考如下：
@@ -135,6 +141,10 @@ beaconJsReport.enableBridge(webView);
 MyWebChromeClient myWebChromeClient = new MyWebChromeClient();
 mWebView.setWebChromeClient(myWebChromeClient);
 mBeaconJsReport.enableBridge(mWebView, myWebChromeClient);
+
+// webview userAgent 添加自定义标记:isApp
+WebSettings webSettings = mWebView.getSettings();
+webSettings.setUserAgentString(userAgent + " isApp");
 
 public class MyWebChromeClient extends BeaconWebChromeClient {
     @Override
