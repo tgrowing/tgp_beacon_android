@@ -323,7 +323,8 @@ public class BeaconPubParams {
 ## 本地demo使用
 1. 使用Android Studio打开Demo文件，安装并运行Demo
 2. 配置参数，执行上报
-![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/android_sdk/demo_051959.png)
+![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/android_sdk/demo_051959_4.png)
+
 3. 登录平台，查看上报数据
 ![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/github-readme-images/step9.png)
 
