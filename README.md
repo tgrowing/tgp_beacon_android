@@ -1,6 +1,30 @@
+# 基础知识
+##### 1. 事件模型（Event Model）
+事件模型（Event Model）是以事件为基本研究对象，用来定义和描述一个用户在某个时间通过某种方式完成某个行为。事件的划分和定义，可以反映上报日志的名称和内在数据结构，需要业务根据自身情况需求进行合理设置
+在事件模型中，定义的事件包括以下类型的信息。
+![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step12.png)
+
+What： 描述用户所做的这个事件的具体内容。在平台中，会通过日志里的 eventCode 来区分用户的不同行为，例如登录、播放、购买、页面访问等。
+
+Who： 即触发这次事件的用户。在平台中，会通过日志里的UIN字段默认分配一个设备唯一ID来标识当前用户，即设备ID。当然，也可以通过自定义其他字段来上报其他类型UID，例如imei、mac、guid、QQ号、OpenID、业务账号UID等。
+
+When： 即这个事件发生的实际时间。在平台中，使用 event_time 字段来记录精确到毫秒的触发时间。如果由于网络问题延迟上报，事件原始触发时间不会发生变化。但是这条日志进入的分区可能会延后到第二天，因此分区时间ds可能包含少量不在当天触发的事件。建议尽量使用 event_time 事件触发时间来进行分析，更加反应事件的客观情况。
+
+以上的 What、Who、When 是一条事件的3个基本要素，在事件定义中缺一不可。
+
+Params： 即用户从事这个事件的方式。这个概念比较广，包括用户所在的地理位置、使用的设备、使用的浏览器、使用的 App 版本、操作系统版本、进入的渠道、跳转过来时的 referer 、当前行为的类别等。这些参数字段能够详细记录用户触发事件的具体情况属性，以便于进行灵活精准地数据分析工作。
+
+在 Params 扩展属性参数这部分中，如果使用平台SDK上报，平台会预置一些参数字段作为接口供业务上报。预置字段能够使数据上报更加规范、减少由于对名称理解不一所导致的误解，因此建议尽量使用预置的字段上报对应信息，如果没有相应的预置字段，可以通过定义自定义参数字段来扩展上报。
+##### 2.定义事件的 event code 和显示名
+（一）定义事件event code的核心问题是如何把握事件的颗粒度。
+理论上可以随意定义事件名称，然后交由开发按特定规则进行拼接、解析、统计。但是平台定位于自动敏捷分析，中间无人工参与，因此为了确保最终业务的分析使用效率，请重视这个环节。这个环节重要但是不复杂。
+如果颗粒度过粗，例如命名为“页面访问事件”“点击事件”“内容曝光事件”，那么分析用户行为时，非常宽泛且没有针对性，并且总是需要结合多个参数字段，去筛选出特定的某项操作；
+如果颗粒度过细，例如“首页点击播放音乐”“列表页点击播放音乐”“歌单页点击播放音乐”，便显得重复累赘，数量过多不便维护。
+（二）具体怎么把握事件的划分呢？
+通常一个App产品的事件数量， 不多于500个，不少于10个为宜 。（按产品功能复杂度有所调整，这个数字只是个参考。除非你的App是个类似QQ浏览器、手机QQ等，集成了复杂业务形态的超级App；或者是个手电筒App交互足够简单的工具App）
+
+
 # 接入说明
-
-
 
 ## 集成灯塔分析SDK
 
@@ -51,7 +75,7 @@ android{
 
 
 
-## BeaconReport
+## BeaconReport 上报
 
 灯塔SDK用于上报的主类，该对象为单例对象。灯塔的初始化、上报以及功能接口都为该类提供。
 多进程需要分别初始化BeaconReport，独立进行上报。
@@ -75,17 +99,24 @@ beaconReport.start(this, APP_KEY, config);
 
 ```
 
-### 上报事件
+Appkey获取方式之一：
+* DataInsight官网地址 [https://growth.qq.com](https://growth.qq.com/)
+    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step3.png)
 
+
+
+### 上报事件
+方法：
 ```
 public EventResult report(BeaconEvent beaconEvent);
 ```
-
+实例：
 ```java
 Map<String, String> params = new HashMap<>();`
-params.put("k1", "v1");`
+params.put("k1", "v1");
+params.put("button_name","report_button1");`
 BeaconEvent event = BeaconEvent.builder()
-                .withCode("onClick")// 事件名，必须
+                .withCode("testDemoButtonClick")// 事件名，必须
                 .withParams(params) // 事件参数，非必须
                 .withAppKey(APP_KEY) // 非必须，如果不填，默认会使用BeaconReport.start()初始化时传入的appKey
                 .build();
@@ -93,13 +124,19 @@ EventResult result = BeaconReport.getInstance().report(event);
 Log.i("TAG", "EventResult{ eventID:" + result.eventID + ", errorCode: " + result.errorCode + ", errorMsg: " + result.errMsg + "}");
 ```
 若该事件符合上报规范，则 **错误码为0** ，并且返回该事件在SDK中的唯一ID(以实时和普通分别计算)，若不符合上报规范则返回错误码以及信息，错误码对应表见附录。
-注意：
 
+注意：
 1. **若BeaconEvent中AppKey参数传空则默认带上宿主AppKey，如果带上其他appkey会自动开启子通道进行上报**
 2. EventCode不可为空！
 3. **params中单个value最大长度为10K，kv整体最大为45K，超过限制会截断**
-
-
+4. 上报事件 事件名及参数获取：
+    1. 进入到应用
+    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step4.png)
+    2. 登记事件（创建登记事件或查看登记事件）
+    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step5.png)
+5. 查看上报数据
+    1. 登录平台查看
+    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step9.png)
 
 ### 获取灯塔采集参数
 ```java
@@ -281,7 +318,12 @@ public class BeaconPubParams {
     private String cid;                              // EV：SD卡id
     // getter,setter
 ```
-
+## 本地demo使用
+1. 使用Android Studio打开Demo文件，安装并运行Demo
+2. 配置参数，执行上报
+![image.png](https://resource.growth.qq.com//sdk/images/android_sdk/demo_051959.png)
+3. 登录平台，查看上报数据
+![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step9.png)
 
 
 ## 附录
