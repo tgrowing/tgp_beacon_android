@@ -1,8 +1,10 @@
 # 基础知识
+
 ##### 1. 事件模型（Event Model）
 事件模型（Event Model）是以事件为基本研究对象，用来定义和描述一个用户在某个时间通过某种方式完成某个行为。事件的划分和定义，可以反映上报日志的名称和内在数据结构，需要业务根据自身情况需求进行合理设置
 在事件模型中，定义的事件包括以下类型的信息。
-![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step12.png)
+
+![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images/step12.png)
 
 What： 描述用户所做的这个事件的具体内容。在平台中，会通过日志里的 eventCode 来区分用户的不同行为，例如登录、播放、购买、页面访问等。
 
@@ -101,7 +103,7 @@ beaconReport.start(this, APP_KEY, config);
 
 Appkey获取方式之一：
 * DataInsight官网地址 [https://growth.qq.com](https://growth.qq.com/)
-    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step3.png)
+    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images/step3.png)
 
 
 
@@ -131,12 +133,12 @@ Log.i("TAG", "EventResult{ eventID:" + result.eventID + ", errorCode: " + result
 3. **params中单个value最大长度为10K，kv整体最大为45K，超过限制会截断**
 4. 上报事件 事件名及参数获取：
     1. 进入到应用
-    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step4.png)
+    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images/step4.png)
     2. 登记事件（创建登记事件或查看登记事件）
-    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step5.png)
+    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images/step5.png)
 5. 查看上报数据
     1. 登录平台查看
-    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step9.png)
+    ![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images/step9.png)
 
 ### 获取灯塔采集参数
 ```java
@@ -323,7 +325,7 @@ public class BeaconPubParams {
 2. 配置参数，执行上报
 ![image.png](https://resource.growth.qq.com//sdk/images/android_sdk/demo_051959.png)
 3. 登录平台，查看上报数据
-![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images//step9.png)
+![image.png](https://resource.growth.qq.com/sdk/images/github-readme-images/step9.png)
 
 
 ## 附录
