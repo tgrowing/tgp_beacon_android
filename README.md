@@ -146,6 +146,13 @@ public BeaconPubParams getCommonParams(Context context);
 ```
 返回灯塔SDK采集到用户信息。 
 
+### 手机型号设置上报
+```java
+public void setModel(String model);
+```
+注：由于政策合规原因不再默认采集手机型，如需上报，需主动设置手机型号
+
+
 ### 停止事件上报
 ```java
 public void stopReport(boolean immediately);
