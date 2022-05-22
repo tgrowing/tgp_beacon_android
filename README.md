@@ -150,6 +150,7 @@ public BeaconPubParams getCommonParams(Context context);
 ```java
 public void setModel(String model);
 ```
+@param immediately 如果为true则会马上中断正在进行的任务，false则会等待任务完成后再停止轮询
 注：由于政策合规原因不再默认采集手机型，如需上报，需主动设置手机型号
 
 
@@ -244,7 +245,7 @@ BeaconEvent event = BeaconEvent.builder()
 在初始化时传入配置，除androidID外，其他都可以不填
 ```java
 public class BeaconConfig {
-   private final int maxDBCount;//DB存储的最大事件条数(实时和普通分开计算)，默认为1万条
+   private final int maxDBCount;//DB存储的最大事件条数(实时和普通分开计算)，默认为1万条,最大条数区间为[20000, 50000]
    private final boolean strictMode;// 严苛模式，默认false
    private final boolean logAble;// 日志开关，默认false
    private final boolean abroad;// 是否开启海外版，对qimei有影响，默认false
