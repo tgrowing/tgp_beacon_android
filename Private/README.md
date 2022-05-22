@@ -112,11 +112,11 @@ public BeaconPubParams getCommonParams(Context context);
 ```java
 public void setModel(String model);
 ```
-@param immediately 如果为true则会马上中断正在进行的任务，false则会等待任务完成后再停止轮询。默认false
 注：由于政策合规原因不再默认采集手机型，如需上报，需主动设置手机型号
 
 ### 停止事件上报
 ```java
+// @param immediately 如果为true则会马上中断正在进行的任务，false则会等待任务完成后再停止轮询。默认false
 public void stopReport(boolean immediately);
 ```
 暂停轮询上报，期间生成的事件可以正常入库存储；调用resumeReport()或者重新初始化可恢复上报。 
