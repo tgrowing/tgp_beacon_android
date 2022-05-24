@@ -304,7 +304,7 @@ public class BeaconPubParams {
 ![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/github-readme-images/step9.png)
 
 ## SDK更新日志
-### V2.1.1
+### V2.1.0
 #### 202-05-24
 * 本地缓存上限取值区间为[10000, 50000]
 * 增加上传失败重试策略，上报间隔 = 初始上报间隔 * 2^(上报失败次数)
