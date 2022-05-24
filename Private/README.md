@@ -116,6 +116,7 @@ public void setModel(String model);
 
 ### 停止事件上报
 ```java
+// @param immediately 如果为true则会马上中断正在进行的任务，false则会等待任务完成后再停止轮询。默认false
 public void stopReport(boolean immediately);
 ```
 暂停轮询上报，期间生成的事件可以正常入库存储；调用resumeReport()或者重新初始化可恢复上报。 
@@ -205,7 +206,7 @@ BeaconEvent event = BeaconEvent.builder()
 在初始化时传入配置，除androidID外，其他都可以不填
 ```java
 public class BeaconConfig {
-   private final int maxDBCount;//DB存储的最大事件条数(实时和普通分开计算)，默认为1万条
+   private final int maxDBCount;//DB存储的最大事件条数(实时和普通分开计算)，默认为1万条，最大存储事件条数区间[10000，50000]
    private final boolean strictMode;// 严苛模式，默认false
    private final boolean logAble;// 日志开关，默认false
    private final boolean abroad;// 是否开启海外版，对qimei有影响，默认false
@@ -294,7 +295,19 @@ public class BeaconPubParams {
     private String cid;                              // EV：SD卡id
     // getter,setter
 ```
+## 本地demo使用
+1. 使用Android Studio打开Demo文件，安装并运行Demo
+2. 配置参数，执行上报
+![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/android_sdk/demo_051959_4.png)
 
+3. 登录平台，查看上报数据
+![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/github-readme-images/step9.png)
+
+## SDK更新日志
+### V2.1.1
+#### 202-05-24
+* 本地缓存上限取值区间为[10000, 50000]
+* 增加上传失败重试策略，上报间隔 = 初始上报间隔 * 2^(上报失败次数)
 
 
 ## 附录
