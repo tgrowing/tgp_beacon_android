@@ -76,7 +76,6 @@ android{
 ```
 
 
-
 ## BeaconReport 上报
 
 灯塔SDK用于上报的主类，该对象为单例对象。灯塔的初始化、上报以及功能接口都为该类提供。
@@ -87,10 +86,9 @@ android{
 在 **Application** 的 **onCreate()** 方法中调用 **BeaconReport.getInstance.start()** 初始化 SDK。
 
 ```java
-// 配置项详情参考后文BeaconConfig介绍，除AndroidID外，如不清楚可以都不填
+// 配置项详情参考后文BeaconConfig介绍
 BeaconConfig config = BeaconConfig.builder()
-			 .setAndroidID("aaa") // 重要，不设置androidID会影响数据监控(对业务数据无影响)
-			 .build();
+             .build();
 BeaconReport beaconReport = BeaconReport.getInstance();
 beaconReport.setAppVersion("填入您的app版本"); // 可选
 beaconReport.setChannelID("填入您的channelid"); // 可选
@@ -100,11 +98,20 @@ beaconReport.setChannelID("填入您的channelid"); // 可选
 beaconReport.start(this, APP_KEY, config);
 
 ```
+#### 私有化版本部署
+私有化版本需通过setUploadHost设置自定义的上报域名。
+```java
+BeaconConfig config = BeaconConfig.builder()
+.setUploadHost("私有化域名")
+.build();
+beaconReport.start(this, APP_KEY, config);
+```
 
-Appkey获取方式之一：
-* DataInsight官网地址 [https://growth.qq.com](https://growth.qq.com/)
-    ![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/github-readme-images/step3.png)
-
+Appkey获取渠道如下：
+- 渠道一：【数据管家】
+![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/github-readme-images/step3.png)
+- 渠道二：【应用管理】
+![image.png](https://tencent-growth-platform-1251316161.cos.ap-beijing.myqcloud.com/sdk/images/github-readme-images/get_appkey_step2.png)
 
 
 ### 上报事件
@@ -150,7 +157,7 @@ public BeaconPubParams getCommonParams(Context context);
 ```java
 public void setModel(String model);
 ```
-注：由于政策合规原因不再默认采集手机型，如需上报，需主动设置手机型号
+注：由于政策合规原因不再默认采集手机型号，如需上报，需主动设置手机型号
 
 
 ### 停止事件上报
@@ -175,13 +182,13 @@ BeaconJsReport beaconJsReport = new BeaconJsReport();
 // 开启内嵌H5通过App上报埋点的通路
 beaconJsReport.enableBridge(webView);
 ```
-2. webview userAgent 添加自定义标记:isApp
+2. webView userAgent 添加自定义标记:isApp
 ```
-// webview userAgent 添加自定义标记:isApp
+// webView userAgent 添加自定义标记:isApp
 WebSettings webSettings = mWebView.getSettings();
 webSettings.setUserAgentString(userAgent + " isApp");
 ```
-注意：若webview有setWebChromeClient，需要实现继承自BeaconWebChromeClient的WebChromeClient，并在enableBridge时传入。若重写onConsoleMessage后return true拦截了消息，则SDK将不会处理h5传到app端的消息。若需使用app端和h5的通路，请保持不拦截。
+注意：若webView有setWebChromeClient，需要实现继承自BeaconWebChromeClient的WebChromeClient，并在enableBridge时传入。若重写onConsoleMessage后return true拦截了消息，则SDK将不会处理h5传到app端的消息。若需使用app端和h5的通路，请保持不拦截。
 代码参考如下：
 ```java
 // 实现继承自BeaconWebChromeClient的WebChromeClient，并在enableBridge时传入
@@ -242,7 +249,7 @@ BeaconEvent event = BeaconEvent.builder()
                 .build();
 ```
 ## BeaconConfig 
-在初始化时传入配置，除androidID外，其他都可以不填
+在初始化时传入配置，选填
 ```java
 public class BeaconConfig {
    private final int maxDBCount;//DB存储的最大事件条数(实时和普通分开计算)，默认为1万条，最大存储事件条数区间[10000，50000]
@@ -318,7 +325,6 @@ public class BeaconPubParams {
     private String dtImei2;                         // EV: IMEI2:新增采集
     private String dtMeid;                          // EV: MEID: 新增采集
     private String imsi;                             // EV: IMSI
-    private String androidId;                       // EV: ANDROID_ID
     private String modelApn;                        // G: 设备设置APN
     private String mac;                              // EV: MAC
     private String wifiMac;                         // EV: WiFi Mac
@@ -326,6 +332,7 @@ public class BeaconPubParams {
     private String allSsid;                         // a109：扫描当前设备连接的路由器下的所有设备IP和mac地址，第一组为本机的IP和mac地址
     private String networkType;                     // 网络类型
     private String cid;                              // EV：SD卡id
+    
     // getter,setter
 ```
 ## 本地demo使用
@@ -338,10 +345,16 @@ public class BeaconPubParams {
 
 ## SDK更新日志
 ### V2.1.1
+#### 202-06-02
+* 预置页面访问、页面离开、应用退出事件上报;
+    * 页面访问/离开：打开/退出一个 Activity 时触发
+* 预置页面访问时间、应用访问事件、页面路径、页面来源参数上报
+    * 页面路径、页面来源命名：Activity 的包名.类名
+
+### V2.1.0
 #### 202-05-24
 * 本地缓存上限取值区间为[10000, 50000]
 * 增加上传失败重试策略，上报间隔 = 初始上报间隔 * 2^(上报失败次数)
-
 
 ## 附录
 
@@ -356,6 +369,3 @@ public class BeaconPubParams {
 | 104    | 当前事件没有对应的通道  |
 | 105    | 事件整体kv字符串大于45K |
 | 106    | 事件名为空              |
-
- 
-
