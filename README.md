@@ -99,10 +99,10 @@ beaconReport.start(this, APP_KEY, config);
 
 ```
 #### 私有化版本部署
-私有化版本需通过setUploadHost设置自定义的上报域名。
+私有化版本需通过setUploadHost设置自定义的上报地址。
 ```java
 BeaconConfig config = BeaconConfig.builder()
-.setUploadHost("私有化域名")
+.setUploadHost("私有化地址")
 .build();
 beaconReport.start(this, APP_KEY, config);
 ```
