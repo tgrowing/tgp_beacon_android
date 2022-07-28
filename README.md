@@ -88,6 +88,7 @@ android{
 ```java
 // 配置项详情参考后文BeaconConfig介绍
 BeaconConfig config = BeaconConfig.builder()
+             .setIsSocketMode(false) // 必须，将socket置为不可访问模式
              .build();
 BeaconReport beaconReport = BeaconReport.getInstance();
 beaconReport.setAppVersion("填入您的app版本"); // 可选
@@ -102,6 +103,7 @@ beaconReport.start(this, APP_KEY, config);
 私有化版本需通过setUploadHost设置自定义的上报地址。
 ```java
 BeaconConfig config = BeaconConfig.builder()
+.setIsSocketMode(false) // 必须，将socket置为不可访问模式
 .setUploadHost("私有化地址")
 .build();
 beaconReport.start(this, APP_KEY, config);
